@@ -3,13 +3,15 @@ package edu.unac.domine;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 class PlayerTest {
     @Test
     void playerWins() {
-        Dice dice = new Dice(6);
+        Dice diceMock = Mockito.mock(Dice.class);
+        Mockito.when(diceMock.roll()).thenReturn(5);
 
-        Player player = new Player(4, dice);
+        Player player = new Player(4, diceMock);
 
         assertTrue(player.play());
     }
