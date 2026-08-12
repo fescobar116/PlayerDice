@@ -18,9 +18,10 @@ class PlayerTest {
 
     @Test
     void playerLoses(){
-        Dice dice = new Dice(6);
+        Dice diceMock = Mockito.mock(Dice.class);
+        Mockito.when(diceMock.roll()).thenReturn(2);
 
-        Player player = new Player(4, dice);
+        Player player = new Player(4, diceMock);
 
         assertFalse(player.play());
     }
